@@ -7,7 +7,7 @@ Creates current date/time, or stop.
 Install
 -----
 
-Add "kumatch/DateClock" as a dependency in your project's composer.json file.
+Add "kumatch/dateclock" as a dependency in your project's composer.json file.
 
 
     {
