@@ -18,7 +18,7 @@ class DateClock
         if ($this->waitingDateTime) {
             return $this->waitingDateTime;
         } else {
-            return new DateTime('now', $timezone);
+            return $this->createDateTime('now', $timezone);
         }
     }
 
@@ -31,7 +31,7 @@ class DateClock
         if (is_a($date, '\DateTime')) {
             $this->waitingDateTime = $date;
         } else {
-            $this->waitingDateTime = new DateTime($date, $timezone);
+            $this->waitingDateTime = $this->createDateTime($date, $timezone);
         }
     }
 
@@ -41,5 +41,19 @@ class DateClock
     public function reset()
     {
         $this->waitingDateTime = null;
+    }
+
+    /**
+     * @param $date
+     * @param null $timezone
+     * @return DateTime
+     */
+    protected function createDateTime($date, $timezone = null)
+    {
+        if (!is_null($timezone)) {
+            return new DateTime($date, $timezone);
+        } else {
+            return new DateTime($date);
+        }
     }
 }
